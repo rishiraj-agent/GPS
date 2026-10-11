@@ -44,6 +44,16 @@ echo -e "${GREEN}[+] Found $PYTHON_VER${RESET}"
 
 # Determine installation directories
 APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -d "$APP_DIR/GPS/gps_tool" ]; then
+    SOURCE_DIR="$APP_DIR/GPS"
+elif [ -d "$APP_DIR/gps_tool" ]; then
+    SOURCE_DIR="$APP_DIR"
+elif [ -d "./GPS/gps_tool" ]; then
+    SOURCE_DIR="./GPS"
+else
+    SOURCE_DIR="$APP_DIR"
+fi
+
 INSTALL_TARGET_DIR="$HOME/.local/share/gps-tool"
 BIN_DIR="$HOME/.local/bin"
 LAUNCHER="$BIN_DIR/GPS"
@@ -54,10 +64,10 @@ mkdir -p "$INSTALL_TARGET_DIR"
 mkdir -p "$BIN_DIR"
 
 # Copy package files cleanly
-echo -e "${GREY}[*] Copying GPS application files...${RESET}"
-cp -r "$APP_DIR/gps_tool" "$INSTALL_TARGET_DIR/"
-cp -r "$APP_DIR/web" "$INSTALL_TARGET_DIR/"
-cp "$APP_DIR/requirements.txt" "$INSTALL_TARGET_DIR/"
+echo -e "${GREY}[*] Copying GPS application files from $SOURCE_DIR...${RESET}"
+cp -r "$SOURCE_DIR/gps_tool" "$INSTALL_TARGET_DIR/"
+cp -r "$SOURCE_DIR/web" "$INSTALL_TARGET_DIR/"
+cp "$SOURCE_DIR/requirements.txt" "$INSTALL_TARGET_DIR/" 2>/dev/null || cp "$APP_DIR/requirements.txt" "$INSTALL_TARGET_DIR/"
 cp "$APP_DIR/README.md" "$INSTALL_TARGET_DIR/"
 
 # Setup Python Virtual Environment (clean and unprivileged)

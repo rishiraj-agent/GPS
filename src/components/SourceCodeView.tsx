@@ -15,6 +15,37 @@ export const SourceCodeView: React.FC = () => {
 
   const files: FileEntry[] = [
     {
+      path: 'install.sh',
+      category: 'Root Scripts (Outside Folder)',
+      description: 'Automated Kali Linux & WSL 2 installer (Runs directly from repository root)',
+      language: 'bash',
+      content: `#!/usr/bin/env bash
+# ==============================================================================
+# GPS (Geo & Phone Summary) - Official Installation Script (Root Entry Point)
+# Designed for Kali Linux & Kali Linux on WSL 2
+# ==============================================================================
+set -e
+
+# Automatically detects ./GPS/ or current directory and configures ~/.local/bin/GPS
+# Run directly from repository root without entering any subfolders:
+#   chmod +x install.sh && ./install.sh`,
+    },
+    {
+      path: 'uninstall.sh',
+      category: 'Root Scripts (Outside Folder)',
+      description: 'Safe uninstaller (Runs directly from repository root)',
+      language: 'bash',
+      content: `#!/usr/bin/env bash
+# ==============================================================================
+# GPS (Geo & Phone Summary) - Clean Uninstallation Script (Root Entry Point)
+# ==============================================================================
+set -e
+
+# Safely removes ~/.local/share/gps-tool and ~/.local/bin/GPS
+# Run directly from repository root without entering any subfolders:
+#   chmod +x uninstall.sh && ./uninstall.sh`,
+    },
+    {
       path: 'GPS/gps',
       category: 'Launchers',
       description: 'Executable CLI launcher script for Kali Linux',
@@ -299,30 +330,6 @@ flake8>=6.1.0
 mypy>=1.5.0
 black>=23.7.0
 types-colorama>=0.4.15`,
-    },
-    {
-      path: 'GPS/install.sh',
-      category: 'Scripts',
-      description: 'Automated Kali Linux & WSL 2 installer (unprivileged venv)',
-      language: 'bash',
-      content: `#!/usr/bin/env bash
-# GPS (Geo & Phone Summary) - Official Installation Script
-# Designed for Kali Linux & Kali Linux on WSL 2
-set -e
-
-# Verifies Linux platform, Python 3, builds ~/.local/share/gps-tool/venv,
-# and links executable wrapper to ~/.local/bin/GPS`,
-    },
-    {
-      path: 'GPS/uninstall.sh',
-      category: 'Scripts',
-      description: 'Safe uninstaller removing only GPS-specific components',
-      language: 'bash',
-      content: `#!/usr/bin/env bash
-# GPS (Geo & Phone Summary) - Clean Uninstallation Script
-set -e
-
-# Removes ~/.local/share/gps-tool and ~/.local/bin/GPS cleanly without touching user data.`,
     },
     {
       path: 'GPS/tests/test_gps.py',

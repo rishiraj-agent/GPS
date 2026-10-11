@@ -18,7 +18,7 @@ export const KaliHeader: React.FC<KaliHeaderProps> = ({
 
   const copyInstallCommand = () => {
     navigator.clipboard.writeText(
-      'unzip GPS.zip && cd GPS && chmod +x install.sh && ./install.sh && source ~/.bashrc && GPS --help'
+      'chmod +x install.sh && ./install.sh && source ~/.bashrc && GPS --help'
     );
     setCopiedInstall(true);
     setTimeout(() => setCopiedInstall(false), 2000);
