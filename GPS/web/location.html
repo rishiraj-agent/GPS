@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS - Consent-Based Device Location</title>
+    <link rel="stylesheet" href="location.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <header class="terminal-header">
+            <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">GPS // Geo &amp; Phone Summary // Kali Linux</div>
+        </header>
+
+        <main class="terminal-body">
+            <pre class="ascii-banner">
+██████╗ ██████╗ ███████╗
+██╔════╝ ██╔══██╗██╔════╝
+██║  ███╗██████╔╝███████╗
+██║   ██║██╔═══╝ ╚════██║
+╚██████╔╝██║     ███████║
+ ╚═════╝ ╚═╝     ╚══════╝
+            </pre>
+
+            <div class="badge-row">
+                <span class="badge">PLATFORM: KALI LINUX</span>
+                <span class="badge">MODE: PRIVACY-FIRST</span>
+                <span class="badge">VERSION: 1.0.0</span>
+            </div>
+
+            <section class="notice-box">
+                <h3>[!] Explicit User Consent Notice</h3>
+                <p>This module requests geolocation for <strong>your current device only</strong>.</p>
+                <ul>
+                    <li>A phone number alone <strong>CANNOT</strong> track another person's live GPS location.</li>
+                    <li>No tracking data is sent to external, third-party, or remote surveillance servers.</li>
+                    <li>Coordinates remain local to your current machine and session.</li>
+                </ul>
+            </section>
+
+            <div class="action-card">
+                <button id="requestBtn" class="btn-primary" type="button">
+                    <span class="btn-icon">📍</span> Share My Device Location
+                </button>
+                <div id="statusText" class="status-message">Awaiting explicit user permission...</div>
+            </div>
+
+            <section id="resultsCard" class="results-card hidden">
+                <div class="section-title">[+] DEVICE LOCATION OBTAINED</div>
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Consent Status:</span>
+                        <span class="meta-val highlight-green">Approved by user</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Latitude:</span>
+                        <span id="latVal" class="meta-val font-mono">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Longitude:</span>
+                        <span id="lngVal" class="meta-val font-mono">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Accuracy:</span>
+                        <span id="accVal" class="meta-val font-mono">--</span>
+                    </div>
+                </div>
+
+                <div class="maps-action">
+                    <a id="mapsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                        🗺️ Open in Google Maps
+                    </a>
+                </div>
+            </section>
+
+            <div id="errorBox" class="error-box hidden">
+                <div class="error-title">[-] Geolocation Error</div>
+                <div id="errorDetails" class="error-text"></div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <span>kali@kali:~/GPS/web$</span>
+            <span class="footer-note">Strictly local consent interface</span>
+        </footer>
+    </div>
+
+    <script src="location.js"></script>
+</body>
+</html>
