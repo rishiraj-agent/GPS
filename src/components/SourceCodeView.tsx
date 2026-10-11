@@ -272,6 +272,35 @@ def print_banner(version: str = "1.0.0") -> None:
 </html>`,
     },
     {
+      path: 'GPS/requirements.txt',
+      category: 'Configuration',
+      description: 'Complete Python package dependencies (phonenumbers, colorama, pytest)',
+      language: 'text',
+      content: `# ==============================================================================
+# GPS (Geo & Phone Summary) - Python Dependencies
+# Platform: Kali Linux / Kali Linux on WSL 2 / Debian / Ubuntu
+# Python Version: >= 3.8
+# ==============================================================================
+
+# Core Runtime Dependencies
+# Google's libphonenumber port for Python.
+# Provides E.164 parsing, ITU-T validation, carrier metadata, geocoding,
+# and regional timezone resolution.
+phonenumbers>=8.13.0,<=9.0.50
+
+# Terminal & Environment Utilities (Optional / Recommended)
+# Cross-platform ANSI color styling support
+colorama>=0.4.6
+
+# Development, Testing & Code Quality (Optional)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+flake8>=6.1.0
+mypy>=1.5.0
+black>=23.7.0
+types-colorama>=0.4.15`,
+    },
+    {
       path: 'GPS/install.sh',
       category: 'Scripts',
       description: 'Automated Kali Linux & WSL 2 installer (unprivileged venv)',
